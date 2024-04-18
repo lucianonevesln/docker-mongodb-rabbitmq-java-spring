@@ -1,6 +1,6 @@
 Projeto: Microsserviço de Envio de E-mail
 
-Objetivo: prover um microsserviço de envio de e-mails que trabalhe de forma síncrona e assíncronam, a partir de uma
+Objetivo: prover um microsserviço de envio de e-mails que trabalhe de forma síncrona e assíncrona, a partir de uma
 aplicação Java, com emprego de mensageria, armazenamento em banco de dados NoSQL e com todos os serviços sendo
 executados em contêineres Docker's interconectados.
 
