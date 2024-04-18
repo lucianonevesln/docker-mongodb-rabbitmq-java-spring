@@ -1,0 +1,41 @@
+version: "3"
+
+
+services:
+  mongo_db:
+    container_name: mongo_db
+    image: mongo
+    volumes:
+      - ./mongo/data:/data/db
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_DATABASE: ms-email
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+    networks:
+      - docker_network_padrao
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - docker_network_padrao
+
+  microsservico_email:
+    container_name: microsservico_email
+    build: .
+    depends_on:
+      - mongo_db
+      - rabbitmq
+    ports:
+      - 8080:8080
+    networks:
+      - docker_network_padrao
+
+
+networks:
+  - docker_network_padrao
